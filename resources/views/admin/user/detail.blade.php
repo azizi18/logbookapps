@@ -46,7 +46,7 @@
                                     <div class="me-2 fw-semibold">
                                         Name :
                                     </div>
-                                    <span class="fs-12 text-muted">{{Auth::user()->name}}</span>
+                                    <span class="fs-12 text-muted">{{Auth::user()->nama}}</span>
                                 </div>
                             </li>
                             <li class="list-group-item border-0">

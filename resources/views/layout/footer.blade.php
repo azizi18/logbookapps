@@ -18,36 +18,9 @@ Swal.fire({
 })
 </script>
 @endif
+
 <script>
     
-     // Popup Delete
-     $(document).on("click", ".delete-link", function(e) {
-        e.preventDefault();
-        url = $(this).attr("href");
-        swal({
-                title: "Yakin akan menghapus data ini?",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonClass: 'btn btn-danger',
-                cancelButtonClass: 'btn btn-success',
-                buttonsStyling: false,
-                confirmButtonText: "Delete",
-                cancelButtonText: "Cancel",
-                closeOnConfirm: false,
-                showLoaderOnConfirm: true,
-            },
-            function(isConfirm) {
-                if (isConfirm) {
-                    $.ajax({
-                        url: url,
-                        success: function(resp) {
-                            window.location.href = url;
-                        }
-                    });
-                }
-                return false;
-            });
-    });
     // Popup disable
     $(document).on("click", ".disable-link", function(e) {
         e.preventDefault();
@@ -218,7 +191,7 @@ Swal.fire({
         <!-- Prism JS -->
         <script src="{{asset('assets/libs/prismjs/prism.js')}}"></script>
         <script src="{{asset('assets/js/prism-custom.js')}}"></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
     $(function() {
         //Initialize Select2 Elements
@@ -284,7 +257,27 @@ Swal.fire({
         });
     });
 </script>
-
+<script>
+   
+    $(document).on("click", ".delete-link", function(e) {
+           e.preventDefault();
+           url = $(this).attr("href");
+           Swal.fire({
+     title: "Apakah Yakin Untuk Menghapus Data?",
+     text: "Anda Tidak Dapat Mengembalikan Data ini!",
+     icon: "warning",
+     showCancelButton: true,
+     confirmButtonColor: "#3085d6",
+     cancelButtonColor: "#d33",
+     confirmButtonText: "Delete"
+   }).then((result) => {
+     if (result.isConfirmed) {
+        window.location.href = url
+     
+     }
+   });
+       });
+   </script>
 @if(session('error'))
     <script>
         Swal.fire({

@@ -47,7 +47,7 @@
                       <input type="hidden" name="id" value="{{$user->id}}">
                         <div class="col-md-6 col-sm-12">
                             <label for="input-placeholder" class="form-label">Nama</label>
-                            <input type="text" name="name" class="form-control" id="input-placeholder" placeholder="Nama" value="{{$user->name}}">
+                            <input type="text" name="name" class="form-control" id="input-placeholder" placeholder="Nama" value="{{$user->nama}}">
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <label for="input-placeholder" class="form-label">Username</label>

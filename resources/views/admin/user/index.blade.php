@@ -54,7 +54,7 @@
                     </div>  
                     
                     <span>
-                        <a href="{{asset('assets/file/data-user.xlsx')}}" class="btn btn-outline-dark" target="blank"><i class="bi bi-download"></i> Download Templeate Excel
+                        <a href="{{asset('assets/file/user.xlsx')}}" class="btn btn-outline-dark" target="blank"><i class="bi bi-download"></i> Download Templeate Excel
                           </a>
                       </span>
             </div>
@@ -106,7 +106,7 @@
                             <td class="text-center">
                                 <small class="text-center">{{$i}}</small>
                             </td>                
-                            <td>{{$user->name}}</td>
+                            <td>{{$user->nama}}</td>
                             <td>{{$user->username}}</td>
                             <td>{{$user->level}}</td>
 
@@ -114,8 +114,9 @@
                                 <div class="hstack gap-2 flex-wrap">
                                     <a href="{{ asset('admin/user/edit/'.$user->id) }}" class="text-info fs-14 lh-1"><i
                                             class="ri-edit-line"></i></a>
-                                    <a href="{{ asset('admin/user/delete/'.$user->id) }}" class="text-danger fs-14 lh-1" id="delete-link"><i
-                                            class="ri-delete-bin-5-line delete-link" ></i></a>
+                                     <a href="{{ asset('admin/user/delete/'.$user->id) }}" class="text-danger fs-14 lh-1 delete-link"><i class="ri-delete-bin-5-line"></i></a>
+
+                                    
                                 </div>
                             </td>
                           

@@ -17,7 +17,7 @@ class Userseeder extends Seeder
     {
         User::truncate();
         User::create([
-            'name' => 'admin',
+            'nama' => 'admin',
             'username' => 'admin1',
             'password' => bcrypt('admin'),
             'level' => 'admin',
@@ -25,7 +25,7 @@ class Userseeder extends Seeder
 
         ]);
         User::create([
-            'name' => 'user',
+            'nama' => 'user',
             'username' => 'user1',
             'password' => bcrypt('user'),
             'level' => 'users',
@@ -34,7 +34,7 @@ class Userseeder extends Seeder
         ]);
 
         User::create([
-            'name' => 'dosen',
+            'nama' => 'dosen',
             'username' => 'dosen1',
             'password' => bcrypt('dosen'),
             'level' => 'dosen',

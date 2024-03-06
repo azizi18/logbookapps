@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
@@ -18,10 +19,11 @@ class UserImport implements ToModel, WithHeadingRow
     {
         return new User([
            
-            'name'     => $row['name'],
+            'nama'     => $row['nama'],
             'username'     => $row['username'],
-            'password'    => $row['password'], 
+            'password'    => Hash::make($row['password']), 
             'level'    => $row['level'], 
+           
         ]);
        
     }

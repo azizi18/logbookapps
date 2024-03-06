@@ -37,7 +37,7 @@
                     <div class="card-body">
                         <div class="col-md-6 col-sm-12">
                             <label for="input-placeholder" class="form-label">Nama</label>
-                            <input type="text" name="name" class="form-control" id="input-placeholder" placeholder="Nama" value="{{ old('nama') }}" required>
+                            <input type="text" name="nama" class="form-control" id="input-placeholder" placeholder="Nama" value="{{ old('nama') }}" required>
                         </div>
                         <div class="col-md-6 col-sm-12">
                             <label for="input-placeholder" class="form-label">Username</label>

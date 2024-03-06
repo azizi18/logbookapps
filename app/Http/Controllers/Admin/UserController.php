@@ -36,7 +36,7 @@ class UserController extends Controller
         $namaFile = $file->getClientOriginalName();
         $file->move('Datausers', $namaFile);
         
-        Excel::import(new User, \public_path ('/Datausers/'.$namaFile));  
+        Excel::import(new UserImport, \public_path ('/Datausers/'.$namaFile));  
        
          return redirect('admin/user')->with(['succses' => 'Data telah ditambah']);
   
@@ -103,7 +103,7 @@ class UserController extends Controller
     public function tambah(Request $request)
     {
     	request()->validate([
-                            'name'     => 'required',
+                            'nama'     => 'required',
 					        'username' => 'required|unique:users',
 					        'password' => 'required',
 					        'level' => 'required',
@@ -111,7 +111,7 @@ class UserController extends Controller
       
            
             DB::table('users')->insert([
-                'name'          => $request->name,
+                'nama'          => $request->nama,
                 'username'   	=> $request->username,
                 'password'      => bcrypt($request->password),
                 'level'         => $request->level
@@ -124,14 +124,14 @@ class UserController extends Controller
     public function proses_edit(Request $request)
     {
     	request()->validate([
-					        'name'     => 'required',
+					        'nama'     => 'required',
                             'username' => 'required',
                             'password' => 'required',
                             'level' => 'required',
 					        ]);
        
             DB::table('users')->where('id',$request->id)->update([
-                'name'          => $request->name,
+                'nama'          => $request->name,
                 'username'      => $request->username,
                 'password'      => bcrypt($request->password),
                 'level'   => $request->level
