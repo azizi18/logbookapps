@@ -22,7 +22,7 @@ class Login extends Controller
       ]);
  
        if (Auth::attempt($request->only('username','password','level'))){        
-        return redirect('admin/dashboard')->with(['succses' => 'Anda berhasil login']);
+        return redirect('admin/dashboard');
 
        }
        else{
@@ -39,7 +39,7 @@ class Login extends Controller
        Session()->forget('name');
        Session()->forget('username');
        Session()->forget('level');
-       return redirect('/')->with(['succses' => 'Anda berhasil logout']);
+       return redirect('/');
 
      }
 }

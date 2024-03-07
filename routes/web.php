@@ -22,7 +22,7 @@ Route::get('logout', 'App\Http\Controllers\Login@logout');
 
 
 Route::group(['middleware' => ['auth', 'ceklevel:admin']], function(){
-    route::get('admin/data-logbook','App\Http\Controllers\Admin\DataLogBook@index');
+    route::get('admin/data-logbook','App\Http\Controllers\Admin\DataLogBookController@index');
     Route::get('admin/user', 'App\Http\Controllers\Admin\UserController@index');
     
 
@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function(){
 });
 
 Route::group(['middleware' => ['auth', 'ceklevel:admin,users,dosen']], function(){
-    route::get('admin/dashboard','App\Http\Controllers\Admin\Dashboard@index');
+    route::get('admin/dashboard','App\Http\Controllers\Admin\DashboardController@index');
 
    
 });
@@ -52,5 +52,15 @@ Route::group(['middleware' => ['auth', 'ceklevel:dosen']], function(){
     Route::get('admin/user/edit_password', 'App\Http\Controllers\Admin\UserController@edit_password');
     Route::post('admin/user/proses_edit_password', 'App\Http\Controllers\Admin\UserController@proses_edit_password');
     Route::post('admin/user/import', 'App\Http\Controllers\Admin\UserController@import');
+
+
+    // data logbook
+    Route::post('admin/data-logbook/tambah', 'App\Http\Controllers\Admin\DataLogBookController@tambah');
+    Route::get('admin/data-logbook/add', 'App\Http\Controllers\Admin\DataLogBookController@add');
+    Route::get('admin/data-logbook/edit/{id}', 'App\Http\Controllers\Admin\DataLogBookController@edit');
+    Route::post('admin/data-logbook/proses_edit', 'App\Http\Controllers\Admin\DataLogBookController@proses_edit');
+    Route::get('admin/data-logbook/delete/{id}', 'App\Http\Controllers\Admin\DataLogBookController@delete');
+    Route::post('admin/data-logbook/proses', 'App\Http\Controllers\Admin\DataLogBookController@proses');
+    Route::post('admin/data-logbook/import', 'App\Http\Controllers\Admin\DataLogBookController@import');
 
   

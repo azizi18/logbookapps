@@ -244,19 +244,7 @@ Swal.fire({
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('assets/admin/dist/js/demo.js') }}"></script>
 <!-- page script -->
-<script>
-    $(function() {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-            "paging": false,
-            "lengthChange": false,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-        });
-    });
-</script>
+
 <script>
    
     $(document).on("click", ".delete-link", function(e) {
@@ -296,6 +284,7 @@ Swal.fire({
     })
 </script>
 @endif
+
 
 </body>
 

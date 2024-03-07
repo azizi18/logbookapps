@@ -14,11 +14,13 @@ $(function (e) {
     // responsive datatable
     $('#responsiveDataTable').DataTable({
         responsive: true,
+        scrollX: true,
+        scrollCollapse: true,
         language: {
             searchPlaceholder: 'Search...',
             sSearch: '',
         },
-        "pageLength": 10,
+        "pageLength": 20,
     });
     // responsive datatable
 
@@ -90,6 +92,7 @@ $(function (e) {
             searchPlaceholder: 'Search...',
             sSearch: '',
         },
+        "pageLength": 10,
     });
     // scroll vertical
 

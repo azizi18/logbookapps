@@ -10,7 +10,6 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UserImport;
-use App\Models\User;
 
 
 
@@ -131,7 +130,7 @@ class UserController extends Controller
 					        ]);
        
             DB::table('users')->where('id',$request->id)->update([
-                'nama'          => $request->name,
+                'nama'          => $request->nama,
                 'username'      => $request->username,
                 'password'      => bcrypt($request->password),
                 'level'   => $request->level

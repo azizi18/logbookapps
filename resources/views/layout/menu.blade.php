@@ -50,7 +50,7 @@
                           <a href="{{ asset('admin/data-logbook')}}" class="side-menu__item">Kelola Data LogBook</a>
                       </li>
                       <li class="slide">
-                        <a href="{{ asset('admin/data-logbook')}}" class="side-menu__item">Input Data LogBook</a>
+                        <a href="{{ asset('admin/data-logbook/add')}}" class="side-menu__item">Input Data LogBook</a>
                     </li>
                   </ul>
               </li>
