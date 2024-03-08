@@ -24,7 +24,10 @@ class User extends Authenticatable
         'password',
         'level',
     ];
-
+    public function logbooks()
+    {
+        return $this->hasMany(Logbook::class);
+    }
   
    
 }

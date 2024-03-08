@@ -20,16 +20,27 @@ class Login extends Controller
          'username' => 'required',
          'password' => 'required|min:4',
       ]);
- 
-       if (Auth::attempt($request->only('username','password','level'))){        
-        return redirect('admin/dashboard');
 
-       }
+      $credentials = $request->only('username', 'password','level');
+    
+    if (Auth::attempt($credentials)) {
+        // Login berhasil
+        if (Auth::user()->level === 'admin') {
+            return redirect('admin/dashboard');
+        } elseif (Auth::user()->level === 'dosen') {
+            return redirect()->intended('dosen/dashboard');
+        }
+        elseif (Auth::user()->level === 'users') {
+          return redirect()->intended('users/dashboard');
+      }
+    }
        else{
 
          return redirect('/')->with(['error' => 'Mohon maaf, Username atau password salah']);
 
        }
+      
+    
       
     }
 

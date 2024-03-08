@@ -1,16 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
+
 class DashboardController extends Controller
 {
     public function index (){
+      
         
-        // jumlah user
+		// jumlah user
         $total_users = DB::table('users')->count();
 
         $total_users_persen = 100;
@@ -19,20 +21,19 @@ class DashboardController extends Controller
 
         // Jumlah logbook
 
-        $total_logbook = DB::table('logbook')->count();
+        $total_logbook = DB::table('logbook')->where('user_id', auth()->id())->count();
         $total_logbook_persen = 100;
 
         $persentase_logbook = ($total_logbook / $total_logbook_persen) * 100;
         
-		$data = array(  'title'     => 'welcome admin',
+		$data = array(  'title'     => 'welcome users',
                         'total_users'     => $total_users,
                         'persentase_users'     => $persentase_users,
                         'total_logbook'     => $total_logbook,
                         'persentase_logbook'     => $persentase_logbook,
-                        'content'   => 'admin/dashboard/index'
+                        'content'   => 'user/dashboard/index'
                     );
         return view('layout/wrapper',$data);
+    
     }
-
-   
 }

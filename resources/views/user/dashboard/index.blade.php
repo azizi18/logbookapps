@@ -8,7 +8,7 @@
           <div>
             <ol class="breadcrumb mb-0">
               <li class="breadcrumb-item">
-                <a href="{{asset('admin/dashboard')}}">Home</a>
+                <a href="{{asset('users/dashboard')}}">Home</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
             </ol>
@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="mt-2">
-                                <h6 class="fw-normal">Total Users</h6>
+                                <h6 class="fw-normal">Jumlah Users</h6>
                                 <h2 class="mb-0 text-dark fw-semibold">{{ $total_users }}</h2>
                             </div>
                             <div class="ms-auto">
@@ -47,7 +47,7 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="mt-2">
-                                <h6 class="fw-normal">Total Data LogBook</h6>
+                                <h6 class="fw-normal">Total Data LogBook Saya</h6>
                                 <h2 class="mb-0 text-dark fw-semibold">{{ $total_logbook }}</h2>
                             </div>
                             <div class="ms-auto">

@@ -1,47 +1,33 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Users;
 
 use App\Exports\logBookExport;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Imports\LogBookImport;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 
-
-
-class DataLogBookController extends Controller
+class DataLogBookUserController extends Controller
 {
     public function index (){
         Paginator::useBootstrap();
-        $logbook 	= DB::table('logbook')->orderBy('id','DESC')->get();
+
+        $user = auth()->id();
+
+        $logbook 	= DB::table('logbook')->where('user_id', $user)->get();
         
 		$data = array(  'title'     => 'Data Logbook',
                         'logbook'      => $logbook,
-                        'content'   => 'admin/data-logbook/index'
+                        'content'   => 'user/data-logbook/index'
                     );
         return view('layout/wrapper',$data);
     }
 
-    public function import(Request $request){
-  
-        request()->validate([
-            'file'        => 'required|mimes:csv,xls,xlsx',
-            ]);
-        $file = $request->file('file');
-        $namaFile = $file->getClientOriginalName();
-        $file->move('DataLogbook', $namaFile);
-        
-        Excel::import(new LogBookImport, \public_path ('/DataLogbook/'.$namaFile));  
-       
-         return redirect('admin/data-logbook')->with(['succses' => 'Data telah ditambah']);
-  
-    }
+ 
 
     public function export() 
     {
@@ -53,7 +39,7 @@ class DataLogBookController extends Controller
     {
         $data = array(
             'title'       => 'Tambah Data',
-            'content'   => 'admin/data-logbook/tambah'
+            'content'   => 'user/data-logbook/tambah'
 
         );
         return view('layout/wrapper',$data);
@@ -65,7 +51,7 @@ class DataLogBookController extends Controller
 
         $data = array(  'title'     => 'Edit Logbook',
                         'logbook'      => $logbook,
-                        'content'   => 'admin/data-logbook/edit'
+                        'content'   => 'user/data-logbook/edit'
                     );
         return view('layout/wrapper',$data);
     }
@@ -81,7 +67,7 @@ class DataLogBookController extends Controller
                 DB::table('logbook')->where('id',$id_logbooknya[$i])->delete();
             }
 
-            return redirect('admin/data-logbook')->with(['succses' => 'Data telah dihapus']);
+            return redirect('users/data-logbook')->with(['succses' => 'Data telah dihapus']);
       
         }
     }
@@ -106,7 +92,6 @@ class DataLogBookController extends Controller
 					        'tanggal_tindakan'  => 'required',
 					        ]);             
                $status = $request->input('status', 'tertunda');
-            
             DB::table('logbook')->insert([
                 'user_id'               => auth()->id(),
                 'nama_pasien'          => $request->nama_pasien,
@@ -127,7 +112,7 @@ class DataLogBookController extends Controller
                 
             ]);
         
-        return redirect('admin/data-logbook')->with(['succses' => 'Data telah ditambah']);
+        return redirect('users/data-logbook')->with(['succses' => 'Data telah ditambah']);
     }
 
     // edit
@@ -171,16 +156,16 @@ class DataLogBookController extends Controller
                 'tanggal_tindakan'     => date('Y-m-d', strtotime($request->tanggal_tindakan))
             ]);
         
-        return redirect('admin/data-logbook')->with(['succses' => 'Data telah diupdate']);
+        return redirect('users/data-logbook')->with(['succses' => 'Data telah diupdate']);
     }
 
-
-    // Delete
-    public function delete($id)
-    {
-    	DB::table('logbook')->where('id',$id)->delete();
-    	return redirect('admin/data-logbook')->with(['succses' => 'Data telah dihapus']);
-    }
-
+ // Delete
+ public function delete()
+ {
+    $user = auth()->id();
+     DB::table('logbook')->where('user_id',$user)->delete();
+     return redirect('users/data-logbook')->with(['succses' => 'Data telah dihapus']);
+ }
+   
 
 }

@@ -13,6 +13,7 @@ class Logbook extends Model
     protected $primaryKey     = 'id';
     public $timestamps = false;
     protected $fillable = [
+        
         'nama_pasien',
         'umur',
         'diagnosis_masuk',
@@ -30,4 +31,10 @@ class Logbook extends Model
         'tanggal_tindakan',
  
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+  
 }

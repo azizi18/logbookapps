@@ -8,14 +8,14 @@
             <div>
               <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item">
-                  <a href="{{asset('admin/data-logbook')}}">Data</a>
+                  <a href="{{asset('users/data-logbook')}}">Data</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">LogBook</li>
               </ol>
             </div>
           </div>
           <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a href="{{ asset('admin/data-logbook') }}" class="btn btn-success btn-sm">
+            <a href="{{ asset('users/data-logbook') }}" class="btn btn-success btn-sm">
                 <i class="bi bi-backspace-fill"></i> Kembali
             </a>           
                
@@ -32,7 +32,7 @@
                            Edit Data Logbook
                         </div>
                     </div>
-                    <form action="{{ asset('admin/data-logbook/proses_edit') }}" method="POST" accept-charset="utf-8" class="needs-validation" novalidate>
+                    <form action="{{ asset('users/data-logbook/proses_edit') }}" method="POST" accept-charset="utf-8" class="needs-validation" novalidate>
                         {{ csrf_field() }}
                         <div class="card-body">
                             <input type="hidden" name="id" value="{{$logbook->id}}">

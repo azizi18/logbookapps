@@ -8,7 +8,7 @@
             <div>
               <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item">
-                  <a href="javascript:void(0)">Data</a>
+                  <a href="{{asset('admin/data-logbook')}}">Data</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">LogBook</li>
               </ol>
@@ -32,44 +32,62 @@
                            Input Data Logbook
                         </div>
                     </div>
-                    <form action="{{ asset('admin/logbook/tambah') }}" method="post" accept-charset="utf-8">
+                    <form action="{{ asset('admin/data-logbook/tambah') }}" method="POST" accept-charset="utf-8" class="needs-validation" novalidate>
                         {{ csrf_field() }}
                         <div class="card-body">
                             <div class="row">
+                                <div class="col-md-6 mb-3 has-validation">
+                                    <label class="form-label" for="validationnamapasien">Nama Pasien</label>
+                                    <input type="text" name="nama_pasien" class="form-control" id="validationnamapasien" placeholder="Nama Pasien"
+                                        aria-label="Nama Pasien" value="{{old('nama_pasien')}}" required>
+                                        <div class="invalid-feedback">
+                                            Please choose a nama pasien.
+                                        </div>
+                                </div>
+                                {{-- @if ($errors->has('nama_pasien'))
+                                <div class="alert alert-danger mt-2">{{ $errors->first('nama_pasien') }}</div>
+                                @endif --}}
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label">Nama Pasien</label>
-                                    <input type="text" class="form-control" placeholder="Nama Pasien"
-                                        aria-label="Nama Pasien">
+                                    <label class="form-label" for="validationumur">Umur</label>
+                                    <input type="number" name="umur" class="form-control" id="validationumur" placeholder="Umur"
+                                        aria-label="Umur" value="{{old('umur')}}" required>
+                                        <div class="invalid-feedback">
+                                            Please choose a umur.
+                                        </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label">Umur</label>
-                                    <input type="text" class="form-control" placeholder="Umur"
-                                        aria-label="Umur">
+                                    <label class="form-label" >MR</label>
+                                    <input type="text" name="mr" class="form-control" placeholder="Mr"
+                                        aria-label="mr" value="{{old('mr')}}">
+                                       
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Diagnosis Masuk</label>
-                                    <input type="text" class="form-control" placeholder="Diagnosis Masuk"
-                                        aria-label="Diagnosis Masuk">
+                                    <input type="text" name="diagnosis_masuk" class="form-control" placeholder="Diagnosis Masuk"
+                                        aria-label="Diagnosis Masuk" value="{{old('diagnosis_masuk')}}">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Diagnosis Keluar</label>
-                                    <input type="text" class="form-control" placeholder="Diagnosis Keluar"
-                                        aria-label="Diagnosis Keluar">
+                                    <input type="text" name="diagnosis_keluar" class="form-control" placeholder="Diagnosis Keluar"
+                                        aria-label="Diagnosis Keluar" value="{{old('diagnosis_keluar')}}">
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label class="form-label">Tindakan</label>
-                                    <input type="text" class="form-control" placeholder="Tindakan"
-                                        aria-label="Tindakan">
+                                    <label class="form-label" for="validationtindakan">Tindakan</label>
+                                    <input type="text" name="tindakan"  class="form-control" id="validationtindakan" placeholder="Tindakan"
+                                        aria-label="Tindakan" value="{{old('tindakan')}}" required>
+                                        <div class="invalid-feedback">
+                                            Please choose a tindakan.
+                                        </div>
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">DPJP</label>
-                                    <input type="text" class="form-control" placeholder="DPJP"
-                                        aria-label="DPJP">
+                                    <input type="text" name="dpjp" class="form-control" placeholder="DPJP"
+                                        aria-label="DPJP" value="{{old('dpjp')}}">
                                 </div>
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label">Klasifikasi Kasus</label>
-                                    <input type="text" class="form-control" placeholder="Klasifikasi Kasus"
-                                        aria-label="Klasifikasi Kasus">
+                                    <input type="text" name="klasifikasi_kasus" class="form-control" placeholder="Klasifikasi Kasus"
+                                        aria-label="Klasifikasi Kasus" value="{{old('klasifikasi_kasus')}}">
                                 </div>
                             </div>
                             <div class="row">
@@ -77,10 +95,10 @@
                                     <label class="form-label">Khusus Kasus Obstetri</label>
                                     <div class="row">
                                         <div class="col-xxl-6 col-xl-12 mb-3">
-                                            <select id="inputState1" class="form-select">
+                                            <select id="inputState1" name="kasus_obstetri" class="form-select">
                                                 <option selected disabled>--Option--</option>
-                                                <option>Diagnosis Obstetri</option>
-                                                <option>Tindakan Obstetri</option>
+                                                <option value="diagnosis_obstetri">Diagnosis Obstetri</option>
+                                                <option value="tindakan_obstetri">Tindakan Obstetri</option>
                                             </select>
                                         </div>
                                      
@@ -92,10 +110,10 @@
                                     <label class="form-label">Khusus Kasus Ginekologi</label>
                                     <div class="row">
                                         <div class="col-xxl-6 col-xl-12 mb-3">
-                                            <select id="inputState1" class="form-select">
+                                            <select id="inputState1" name="kasus_ginekologi" class="form-select">
                                                 <option selected disabled>--Option--</option>
-                                                <option>Diagnosis Ginekologi</option>
-                                                <option>Tindakan Ginekologi</option>
+                                                <option value="diagnosis_ginekologi">Diagnosis Ginekologi</option>
+                                                <option value="tindakan_ginekologi">Tindakan Ginekologi</option>
                                             </select>
                                         </div>
                                       
@@ -105,70 +123,54 @@
                                     <div class="row">
                                 <div class="col-xl-12 mb-3">
                                     <label class="form-label">Level Kompetensi</label>
-                                    <input type="text" class="form-control" placeholder="Level Kompetensi"
-                                        aria-label="Level Kompetensi">
+                                    <input type="text" name="level_kompetensi" class="form-control" placeholder="Level Kompetensi"
+                                        aria-label="Level Kompetensi" value="{{old('level_kompetensi')}}">
                                 </div>
                                 <div class="col-xl-12 mb-3">
                                     <label class="form-label">Asal Rujukan</label>
-                                    <input type="text" class="form-control" placeholder="Asal Rujukan"
-                                        aria-label="Asal Rujukan">
+                                    <input type="text" name="asal_rujukan" class="form-control" placeholder="Asal Rujukan"
+                                        aria-label="Asal Rujukan" value="{{old('asal_rujukan')}}">
                                 </div>
-
                                 <div class="col-xl-12 mb-3">
-                                    <label class="form-label">D.O.B</label>
-                                    <input type="date" class="form-control"
-                                    aria-label="dateofbirth">
+                                    <label for="text-area" class="form-label">Keterangan</label>
+                                    <textarea class="form-control" name="keterangan" id="text-area" placeholder="Keterangan" value="{{old('keterangan')}}"></textarea>
+                                   
                                 </div>
-                                    </div>
-                                </div>
-                                
                                 <div class="col-md-6 mb-3">
+                                    <label class="form-label">Tanggal Masuk</label>
                                     <div class="row">
-                                        
-                                        <div class="col-xl-12 mb-3">
-                                            <div class="row">
-                                                <label class="form-label mb-1">Maritial Status</label>
-                                                <div class="col-xl-6">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="status-married" required="">
-                                                        <label class="form-check-label" for="status-married">
-                                                            Married
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xl-6">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="status-unmarried" required="">
-                                                        <label class="form-check-label" for="status-unmarried">
-                                                            Single
-                                                        </label>
-                                                    </div>
+                                        <div class="col-xxl-6 col-xl-12 mb-3">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-text text-muted"> <i class="ri-calendar-line"></i> </div>
+                                                    <input type="text" name="tanggal_masuk" class="form-control" id="date" placeholder="dd/mm/yyyy" value="{{old('tanggal_masuk')}}">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xl-12">
+                                     
+                                        
+                                    </div>
+                                </div>
 
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Tanggal Tindakan</label>
+                                    <div class="row">
+                                        <div class="col-xxl-6 col-xl-12 mb-3">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <div class="input-group-text text-muted"> <i class="ri-calendar-line"></i> </div>
+                                                    <input type="text" name="tanggal_tindakan" class="form-control" id="date" placeholder="dd/mm/yyyy" value="{{old('tanggal_tindakan')}}">
+                                                </div>
+                                            </div>
                                         </div>
+                                      
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Contact Number</label>
-                                    <input type="number" class="form-control" placeholder="Phone number"
-                                        aria-label="Phone number">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label class="form-label">Alternative Contact</label>
-                                    <input type="number" class="form-control" placeholder="Phone number"
-                                        aria-label="Phone number">
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-check mb-3">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck">
-                                        <label class="form-check-label" for="gridCheck">
-                                            Check me out
-                                        </label>
+                               
                                     </div>
                                 </div>
+                               
+                                
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                               
                                     <button type="submit" name="submit" class="btn btn-primary rounded-pill btn-wave">Simpan Data</button>
