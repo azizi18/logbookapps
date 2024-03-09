@@ -106,9 +106,11 @@ class DataLogBookController extends Controller
 					        'tanggal_tindakan'  => 'required',
 					        ]);             
                $status = $request->input('status', 'tertunda');
-            
+               $uuid = Str::uuid();
+
             DB::table('logbook')->insert([
                 'user_id'               => auth()->id(),
+                'id'                    => $uuid,
                 'nama_pasien'          => $request->nama_pasien,
                 'umur'   	           => $request->umur,
                 'mr'        	       => $request->mr,
@@ -151,9 +153,11 @@ class DataLogBookController extends Controller
 					        ]);
                             
             $status = $request->input('status', 'tertunda');
+            $uuid = Str::uuid();
        
             DB::table('logbook')->where('id',$request->id)->update([
                 'user_id'               => auth()->id(),
+                'id'                    => $uuid,
                 'nama_pasien'          => $request->nama_pasien,
                 'umur'   	           => $request->umur,
                 'mr'        	       => $request->mr,

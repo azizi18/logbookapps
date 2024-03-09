@@ -71,9 +71,9 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php $i=1; foreach($logbook  as $logbook) { ?>
+                                        @foreach ($logbook as $index => $logbook )       
                                         <tr>
-                                            <td>{{$logbook->id}}</td>
+                                            <td>{{$index + 1}}</td>
                                             <td>{{$logbook->nama_pasien}}</td>
                                             <td>{{$logbook->umur}}</td>
                                             <td>{{$logbook->mr}}</td>
@@ -104,7 +104,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <?php $i++; } ?>  
+                                        @endforeach 
                                     </tbody>
                                 </table>
                             </div>

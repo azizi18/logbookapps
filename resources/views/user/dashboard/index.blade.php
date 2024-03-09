@@ -47,7 +47,7 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="mt-2">
-                                <h6 class="fw-normal">Total Data LogBook Saya</h6>
+                                <h6 class="fw-normal">Jumlah Data LogBook Saya</h6>
                                 <h2 class="mb-0 text-dark fw-semibold">{{ $total_logbook }}</h2>
                             </div>
                             <div class="ms-auto">
