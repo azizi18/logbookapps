@@ -57,6 +57,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function(){
 Route::group(['middleware' => ['auth', 'ceklevel:dosen']], function(){
     route::get('dosen/dashboard','App\Http\Controllers\Dosen\DashboardController@index');
     Route::get('dosen/data-logbook', 'App\Http\Controllers\Dosen\DataLogBookDosenController@index');
+    Route::get('dosen/dosen/edit_password', 'App\Http\Controllers\Dosen\UserController@edit_password');
+    Route::post('dosen/dosen/proses_edit_password', 'App\Http\Controllers\Dosen\UserController@proses_edit_password');
     Route::get('getLogbookByUser', 'App\Http\Controllers\Dosen\DataLogBookDosenController@getLogbookByUser');
 
    
@@ -66,6 +68,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:dosen']], function(){
 Route::group(['middleware' => ['auth', 'ceklevel:users']], function(){
     route::get('users/dashboard','App\Http\Controllers\Users\DashboardController@index');
     Route::get('users/data-logbook', 'App\Http\Controllers\Users\DataLogBookUserController@index');
+    Route::get('users/user/edit_password', 'App\Http\Controllers\Users\UserController@edit_password');
+    Route::post('users/user/proses_edit_password', 'App\Http\Controllers\Users\UserController@proses_edit_password');
 
      // data logbook user
      Route::post('users/data-logbook/tambah', 'App\Http\Controllers\Users\DataLogBookUserController@tambah');

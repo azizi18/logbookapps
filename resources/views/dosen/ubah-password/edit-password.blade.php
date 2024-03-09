@@ -23,7 +23,7 @@
               </ol>
             </div>
           </div>
-         
+    
     
           <div class="text-right">
            
@@ -36,7 +36,7 @@
                            Ubah Password
                         </div>
                     </div>
-                    <form action="{{ asset('admin/user/proses_edit_password') }}" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                    <form action="{{ asset('dosen/dosen/proses_edit_password') }}" enctype="multipart/form-data" method="post" accept-charset="utf-8">
                         {{ csrf_field() }}
                     <div class="card-body">
                         <div class="col-md-6 col-sm-12">
@@ -59,8 +59,10 @@
                             <input type="password" name="confirm_password" class="form-control form-control-lg" id="repeat-password" placeholder="ulangi password ">
                             <button class="btn btn-light" type="button" onclick="createpassword('repeat-password',this)" id="button-addon2"><i class="ri-eye-off-line align-middle"></i></button>
                         </div>
+
                         @if ($errors->has('old_password'))
                         <div class="alert alert-danger mt-2">{{ $errors->first('old_password') }}</div>
+                      
 
                         @if ($errors->has('new_password'))
                         <div class="alert alert-danger mt-2">{{ $errors->first('new_password') }}</div>

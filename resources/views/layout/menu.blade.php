@@ -75,6 +75,12 @@
                    
                 </ul>
             </li>
+            <li class="slide">
+                <a href="{{ url('admin/user/edit_password') }}" class="side-menu__item">
+                    <i class="bi bi-pencil-square side-menu__icon"></i>
+                    <span class="side-menu__label">Ubah Password</span>
+                </a>
+            </li>
               @endif
 
                 
@@ -110,6 +116,12 @@
                        
                    </ul>
                </li>
+               <li class="slide">
+                <a href="{{ url('dosen/dosen/edit_password') }}" class="side-menu__item">
+                    <i class="bi bi-pencil-square side-menu__icon"></i>
+                    <span class="side-menu__label">Ubah Password</span>
+                </a>
+            </li>
               @endif
               <!-- End::slide -->
 
@@ -146,6 +158,12 @@
                     </li>
                    </ul>
                </li>
+               <li class="slide">
+                <a href="{{ url('users/user/edit_password') }}" class="side-menu__item">
+                    <i class="bi bi-pencil-square side-menu__icon"></i>
+                    <span class="side-menu__label">Ubah Password</span>
+                </a>
+            </li>
               @endif
               <!-- End::slide -->
           </ul>

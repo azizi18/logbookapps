@@ -44,9 +44,7 @@
                                             Please choose a nama pasien.
                                         </div>
                                 </div>
-                                {{-- @if ($errors->has('nama_pasien'))
-                                <div class="alert alert-danger mt-2">{{ $errors->first('nama_pasien') }}</div>
-                                @endif --}}
+                                
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label" for="validationumur">Umur</label>
                                     <input type="number" name="umur" class="form-control" id="validationumur" placeholder="Umur"
