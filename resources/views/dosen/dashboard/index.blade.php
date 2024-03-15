@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="mt-2">
-                                <h6 class="fw-normal">Jumlah Users</h6>
+                                <h6 class="fw-normal">Jumlah Mahasiswa</h6>
                                 <h2 class="mb-0 text-dark fw-semibold">{{ $total_users }}</h2>
                             </div>
                             <div class="ms-auto">
@@ -68,21 +68,21 @@
 
         <!-- ROW-2 -->
         <div class="row">
-            <div class="col-xxl-9">
+            <div class="col-xxl-10">
                 <div class="card overflow-hidden">
                     <div class="card-header">
-                        <h3 class="card-title">LogBook Analytics</h3>
+                        <h3 class="card-title">Dosen Analytics</h3>
                     </div>
                     <div class="card-body">
                         <div class="d-flex mx-auto text-center justify-content-center mb-4">
-                            <div class="d-flex text-center justify-content-center me-3"><span
-                                    class="dot-label bg-primary my-auto"></span>Jumlah Users</div>
-                            <div class="d-flex text-center justify-content-center"><span
-                                    class="dot-label bg-secondary my-auto"></span>jumlah Logbook</div>
+                            
+                            
                         </div>
-                        {{-- <div class="chartjs-wrapper-demo w-100">
-                            <canvas id="dashboardChart" class="chart-dropshadow w-100"></canvas>
-                        </div> --}}
+                        <div id="chart">
+                            {!! $chart->container() !!}
+                        </div>
+                    
+                        {!! $chart->script() !!}
                     </div>
                 </div>
             </div>

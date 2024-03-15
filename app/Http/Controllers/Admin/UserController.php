@@ -41,9 +41,9 @@ class UserController extends Controller
   
     }
 
-    public function detail($id)
+    public function detail()
     {
-        $user   = DB::table('users')->where('id',$id)->orderBy('id','DESC')->first();
+        $user   = DB::table('users')->where('id')->orderBy('id','DESC')->first();
         $data = array(
             'title'       => 'Profil User',
             'user'      => $user,
@@ -108,8 +108,10 @@ class UserController extends Controller
 					        'level' => 'required',
 					        ]);
       
-           
+           $uuid = Str::uuid();
+
             DB::table('users')->insert([
+                // 'id'                    => $uuid,
                 'nama'          => $request->nama,
                 'username'   	=> $request->username,
                 'password'      => bcrypt($request->password),
@@ -128,8 +130,10 @@ class UserController extends Controller
                             'password' => 'required',
                             'level' => 'required',
 					        ]);
-       
+             $uuid = Str::uuid();
+
             DB::table('users')->where('id',$request->id)->update([
+                // 'id'                    => $uuid,
                 'nama'          => $request->nama,
                 'username'      => $request->username,
                 'password'      => bcrypt($request->password),

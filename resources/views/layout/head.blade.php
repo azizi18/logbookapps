@@ -67,6 +67,8 @@
    
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/sweetalert/css/sweetalert.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/libs/flatpickr/flatpickr.min.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
 
 
     <!-- DataTables -->

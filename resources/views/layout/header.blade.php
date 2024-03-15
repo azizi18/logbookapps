@@ -46,7 +46,7 @@ $user = DB::table('users')->first();
                                     <small class="text-muted">{{ auth()->user()->level}}</small>
                                 </div>
                             </li>
-                    <li class="dropdown-item"><a class="d-flex w-100" href="{{ url('admin/user/detail/'.$user->id)}}"><i class="fe fe-user fs-18 me-2 text-primary"></i>Profile</a></li>
+                    <li class="dropdown-item"><a class="d-flex w-100" href="{{ url('user/profil')}}"><i class="fe fe-user fs-18 me-2 text-primary"></i>Profile</a></li>
                     <li class="dropdown-item"><a class="d-flex w-100" href="{{ url('logout')}}"><i class="fe fe-info fs-18 me-2 text-primary"></i>Log Out</a></li>
                 </ul>
             </div>

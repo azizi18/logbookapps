@@ -52,7 +52,7 @@
                        
                         <div class="col-md-6 col-sm-12">
                             <label for="input-placeholder" class="form-label">Level User</label>
-                            <select class="select2" name="level">
+                            <select class="form-select" name="level">
                                 <option value="admin">Admin</option>
                                 <option value="dosen">Dosen</option>
                                 <option value="users">User</option>

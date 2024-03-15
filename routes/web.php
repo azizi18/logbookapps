@@ -25,6 +25,16 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function(){
     route::get('admin/dashboard','App\Http\Controllers\Admin\DashboardController@index');
     route::get('admin/data-logbook','App\Http\Controllers\Admin\DataLogBookController@index');
     Route::get('admin/user', 'App\Http\Controllers\Admin\UserController@index');
+    Route::post('admin/data-logbook/tambah', 'App\Http\Controllers\Admin\DataLogBookController@tambah');
+
+
+    Route::get('admin/assign-mahasiswa-dosen', 'App\Http\Controllers\Admin\DataMahasiswaController@index');
+    Route::get('admin/assign-mahasiswa-dosen/add', 'App\Http\Controllers\Admin\DataMahasiswaController@add');
+    Route::post('admin/assign-mahasiswa-dosen/tambah', 'App\Http\Controllers\Admin\DataMahasiswaController@assignMahasiswaToDosen');
+    Route::get('admin/assign-mahasiswa-dosen/edit/{id}', 'App\Http\Controllers\Admin\DataMahasiswaController@edit');
+    Route::post('admin/assign-mahasiswa-dosen/proses_edit', 'App\Http\Controllers\Admin\DataMahasiswaController@proses_edit');
+    Route::get('admin/assign-mahasiswa-dosen/delete/{id}', 'App\Http\Controllers\Admin\DataMahasiswaController@delete');
+
 
     // data logbook admin
     Route::post('admin/data-logbook/tambah', 'App\Http\Controllers\Admin\DataLogBookController@tambah');
@@ -45,10 +55,11 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function(){
     Route::post('admin/user/proses_edit', 'App\Http\Controllers\Admin\UserController@proses_edit');
     Route::get('admin/user/delete/{id}', 'App\Http\Controllers\Admin\UserController@delete');
     Route::post('admin/user/proses', 'App\Http\Controllers\Admin\UserController@proses');
-    Route::get('admin/user/detail/{id}', 'App\Http\Controllers\Admin\UserController@detail');
     Route::get('admin/user/edit_password', 'App\Http\Controllers\Admin\UserController@edit_password');
     Route::post('admin/user/proses_edit_password', 'App\Http\Controllers\Admin\UserController@proses_edit_password');
     Route::post('admin/user/import', 'App\Http\Controllers\Admin\UserController@import');
+
+    
 
    
 });
@@ -60,6 +71,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:dosen']], function(){
     Route::get('dosen/dosen/edit_password', 'App\Http\Controllers\Dosen\UserController@edit_password');
     Route::post('dosen/dosen/proses_edit_password', 'App\Http\Controllers\Dosen\UserController@proses_edit_password');
     Route::get('getLogbookByUser', 'App\Http\Controllers\Dosen\DataLogBookDosenController@getLogbookByUser');
+    Route::get('update-status/{logbookId}', 'App\Http\Controllers\Dosen\DataLogBookDosenController@updateStatus');
 
    
 });
@@ -81,7 +93,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:users']], function(){
 
 });
 
-   
+Route::get('user/profil/', 'App\Http\Controllers\Admin\UserController@detail');
+
 
 
     

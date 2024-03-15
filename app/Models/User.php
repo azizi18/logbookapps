@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+
 
 
 class User extends Authenticatable
@@ -24,10 +26,26 @@ class User extends Authenticatable
         'password',
         'level',
     ];
-    public function logbooks()
+    public function logbook()
     {
         return $this->hasMany(Logbook::class);
     }
   
-   
+    public function dosen()
+    {
+        return $this->belongsTo(DosenMahasiswaAssignment::class);
+    }
+
+    public function mahasiswa()
+    {
+        return $this->belongsTo(DosenMahasiswaAssignment::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->id = (string) Str::uuid();
+        });
+    }
 }

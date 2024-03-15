@@ -15,34 +15,14 @@
           </div>
         </div>
         <!-- PAGE-HEADER END -->
-        <div class="alert alert-info">
+        <div class="alert alert-info w-full">
             <marquee behavior="" direction=""><p>Hai <strong>{{Auth::user()->nama}}</strong>, Selamat datang di Halaman Dashboard</p></marquee>
         
         </div>
 
         <!-- ROW-1 -->
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xxl-3">
-                <div class="card overflow-hidden">
-                    <div class="card-body">
-                        <div class="d-flex">
-                            <div class="mt-2">
-                                <h6 class="fw-normal">Jumlah Users</h6>
-                                <h2 class="mb-0 text-dark fw-semibold">{{ $total_users }}</h2>
-                            </div>
-                            <div class="ms-auto">
-                                <div class="chart-wrapper mt-1">
-                                    <canvas id="saleschart" class="chart-dropshadow"></canvas>
-                                </div>
-                            </div>
-                        </div>
-                        <span class="text-muted fs-12"><span class="text-secondary"><i
-                                    class="fe fe-arrow-up-circle text-secondary"></i> {{ $persentase_users }} %</span>
-                            Users</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xxl-3">
+          
                 <div class="card overflow-hidden">
                     <div class="card-body">
                         <div class="d-flex">
@@ -68,24 +48,19 @@
 
         <!-- ROW-2 -->
         <div class="row">
-            <div class="col-xxl-9">
                 <div class="card overflow-hidden">
                     <div class="card-header">
-                        <h3 class="card-title">LogBook Analytics</h3>
+                        <h3 class="card-title">Mahasiswa Analytics</h3>
                     </div>
                     <div class="card-body">
-                        <div class="d-flex mx-auto text-center justify-content-center mb-4">
-                            <div class="d-flex text-center justify-content-center me-3"><span
-                                    class="dot-label bg-primary my-auto"></span>Jumlah Users</div>
-                            <div class="d-flex text-center justify-content-center"><span
-                                    class="dot-label bg-secondary my-auto"></span>jumlah Logbook</div>
+                      
+                        <div id="chart">
+                            {!! $chart->container() !!}
                         </div>
-                        {{-- <div class="chartjs-wrapper-demo w-100">
-                            <canvas id="dashboardChart" class="chart-dropshadow w-100"></canvas>
-                        </div> --}}
+                    
+                        {!! $chart->script() !!}
                     </div>
                 </div>
-            </div>
         </div>
         <!-- ROW-2 END -->
 

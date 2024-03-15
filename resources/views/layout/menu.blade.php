@@ -55,11 +55,32 @@
                     </li>
                   </ul>
               </li>
+
+              <li class="slide has-sub">
+                <a href="javascript:void(0);" class="side-menu__item">
+                    <i class="bi bi-clipboard-data side-menu__icon"></i>
+                    <span class="side-menu__label">Data Mahasiswa</span>
+                    <i class="fe fe-chevron-right side-menu__angle"></i>
+                </a>
+                <ul class="slide-menu child1">
+                    <li class="slide side-menu__label1">
+                        <a href="javascript:void(0)">User</a>
+                    </li>
+                    <li class="slide">
+                        <a href="{{ asset('admin/assign-mahasiswa-dosen')}}" class="side-menu__item">Data Mahasiswa Dan Dosen</a>
+                    </li>
+                   
+                    <li class="slide">
+                        <a href="{{ asset('admin/assign-mahasiswa-dosen/add')}}" class="side-menu__item">Input Mahasiswa</a>
+                    </li>
+                   
+                </ul>
+            </li>
               <!-- Start::slide -->
               <li class="slide has-sub">
                 <a href="javascript:void(0);" class="side-menu__item">
                     <i class="fe fe-users side-menu__icon"></i>
-                    <span class="side-menu__label">User</span>
+                    <span class="side-menu__label">Data User</span>
                     <i class="fe fe-chevron-right side-menu__angle"></i>
                 </a>
                 <ul class="slide-menu child1">
@@ -75,6 +96,7 @@
                    
                 </ul>
             </li>
+            
             <li class="slide">
                 <a href="{{ url('admin/user/edit_password') }}" class="side-menu__item">
                     <i class="bi bi-pencil-square side-menu__icon"></i>

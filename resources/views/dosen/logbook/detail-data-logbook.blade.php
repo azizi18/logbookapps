@@ -3,69 +3,25 @@
 
            <!-- PAGE-HEADER -->
            <div class="page-header">
-            <h1 class="page-title my-auto">Data LogBook</h1>
+            <h1 class="page-title my-auto">User</h1>
             <div>
               <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item">
-                  <a href="{{asset('admin/data-logbook')}}">Data</a>
+                  <a href="{{asset('dosen/data-logbook')}}">Data</a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Data LogBook</li>
+                <li class="breadcrumb-item active" aria-current="page">User</li>
               </ol>
             </div>
           </div>
           <!-- PAGE-HEADER END -->
-          <div class="row">
-            <div class="col-12 col-sm-12">
-                <a href="{{ asset('admin/data-logbook/add') }}"><button type="button" class="btn btn-primary btn-wave">Tambah Data</button></a>
-                
-                {{-- <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-file-earmark-spreadsheet"></i>  
-                    Import Data Excel</button>
-                                             
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h6 class="modal-title" id="exampleModalLabel1">Import Data User</h6>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="{{ asset('admin/data-logbook/import') }}" method="post" enctype="multipart/form-data" accept-charset="utf-8">
-                                        {{ csrf_field() }}
-                                        
-                                            <label class="col-md-9 text-right">Tambah File Dalam Bentuk excel</label>
-                                            <div class="col-md-9 mt-2">
-                                                <input type="file" name="file" required="required">
-                                                 
-                                            </div>
-                                            <div class="modal-footer">
-                                            <button type="submit" name="submit" class="btn btn-primary">Simpan Data
-                                            </button>
-                                           
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Kembali</button>
-                                            </div>
-                                    </form>
-                                        
-                                </div>
-                               
-                            </div>
-                        </div>
-                    </div>   --}}
-                    <span>
-                        <a href="{{asset('admin/data-logbook/export')}}" class="btn btn-secondary" target="blank"><i class="bi bi-download"></i> Export
-                          </a>
-                      </span>
-                    {{-- <span>
-                        <a href="{{asset('assets/file/user.xlsx')}}" class="btn btn-outline-dark" target="blank"><i class="bi bi-download"></i> Download Templeate Excel
-                          </a>
-                      </span> --}}
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="{{ asset('dosen/data-logbook') }}" class="btn btn-success btn-sm">
+                <i class="bi bi-backspace-fill"></i> Kembali
+            </a>           
+               
             </div>
-            
-            
-          </div>
                               
-                                       
+                         
 
 @if ($errors->any())
 <div class="alert alert-danger">
@@ -82,11 +38,10 @@
                         <div class="card custom-card">
                             <div class="card-header">
                                 <div class="card-title">
-                                    Data logBook
+                                    Data LogBook Mahasiswa
                                 </div>
                             </div>
-                            <form action="{{ asset('admin/logbook/proses') }}" method="post" accept-charset="utf-8">
-                                {{ csrf_field() }}
+                           
                             <div class="card-body">
                                 <table id="responsiveDataTable" class="table table-bordered text-nowrap w-100">
                                     <thead>
@@ -108,11 +63,11 @@
                                             <th width="10%">TANGGAL MASUK</th>
                                             <th width="10%">TANGGAL TINDAKAN</th>
                                             <th width="10%">STATUS</th>
-                                            <th width="5%">ACTION</th>
+                                            <th width="10%">VALIDASI</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($logbook as $index => $logbook )       
+                                        @foreach ($logbooks as $index =>  $logbook)
                                         <tr>
                                             <td>{{$index + 1}}</td>
                                             <td>{{$logbook->nama_pasien}}</td>
@@ -134,25 +89,38 @@
                                                 <small class="badge <?php if($logbook->status=="diterima") { echo 'badge bg-outline-primary'; }else{ echo 'badge bg-outline-warning'; } ?> btn-block">
                                                   <i class="fa <?php if($logbook->status=="ditunda") { echo 'fa-check-circle'; }else{ echo 'fa-times'; } ?>"></i> <?php echo $logbook->status ?></small>
                                               </td>
-                                           
                                             <td>
-                                                <div class="hstack gap-2 flex-wrap">
-                                                    <a href="{{ asset('admin/data-logbook/edit/'.$logbook->id) }}" class="text-info fs-14 lh-1"><i
-                                                            class="ri-edit-line"></i></a>
-                                                     <a href="{{ asset('admin/data-logbook/delete/'.$logbook->id) }}" class="text-danger fs-14 lh-1 delete-link"><i class="ri-delete-bin-5-line"></i></a>
-                
+                                                <a href="update-status/{{$logbook->id}}" class="btn btn-sm btn-secondary">
+                                                   OK
                                                     
-                                                </div>
-                                            </td>
+                                                  </a>
+                                              </td>
+                                            
+                                              
+                                         
                                         </tr>
+                                       
+                                       
                                         @endforeach
                                     </tbody>
+                                    
                                 </table>
+                               
+                                    
                             </div>
-                            </form>
+                            </div>
+                           
+
+                          
                         </div>
                     </div>
                 </div>
-
- 
-<!-- End:: row-2 -->
+               
+                <script>
+                    const buttons = document.querySelectorAll('.update-status-btn');
+                    buttons.forEach(button => {
+                        button.addEventListener('click', function() {
+                            this.style.backgroundColor = this.style.backgroundColor === 'green' ? 'red' : 'green';
+                        });
+                    });
+                </script>

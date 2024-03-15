@@ -18,18 +18,13 @@ class CekLevel
      */
     public function handle(Request $request, Closure $next, ...$levels)
     {
-        if (Auth::check() && Auth::user()->level == $levels) {
+        
+        $user = Auth::user();
+
+        if ($user && in_array($user->level, $levels)) {
             return $next($request);
         }
-        return $next($request);
-        // return redirect()->route('/')->with('error', 'Unauthorized access.');
-
-        // if (!Auth::check() || !in_array(Auth::user()->level, $levels)) {
-        //     // return $next($request);
-        // }
-        // return $next($request);
-
-       
-        // return redirect('/')->with('error',"salah");
+               
+        return redirect('/')->with('error',"salah");
     }
 }

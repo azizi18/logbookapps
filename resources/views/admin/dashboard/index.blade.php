@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="mt-2">
-                                <h6 class="fw-normal">Total Users</h6>
+                                <h6 class="fw-normal">Jumlah Users</h6>
                                 <h2 class="mb-0 text-dark fw-semibold">{{ $total_users }}</h2>
                             </div>
                             <div class="ms-auto">
@@ -47,7 +47,7 @@
                     <div class="card-body">
                         <div class="d-flex">
                             <div class="mt-2">
-                                <h6 class="fw-normal">Total Data LogBook</h6>
+                                <h6 class="fw-normal">Jumlah Data LogBook</h6>
                                 <h2 class="mb-0 text-dark fw-semibold">{{ $total_logbook }}</h2>
                             </div>
                             <div class="ms-auto">
@@ -64,6 +64,49 @@
                 </div>
             </div>
        
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xxl-3">
+                <div class="card overflow-hidden">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="mt-2">
+                                <h6 class="fw-normal">Jumlah Mahasiswa</h6>
+                                <h2 class="mb-0 text-dark fw-semibold">{{ $total_mahasiswa }}</h2>
+                            </div>
+                            <div class="ms-auto">
+                                <div class="chart-wrapper mt-1">
+                                    <canvas id="profitchart"
+                                        class="chart-dropshadow"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-muted fs-12"><span class="text-green"><i
+                                    class="fe fe-arrow-up-circle text-green"></i> {{$persentase_mahasiswa }}%</span>
+                            Mahasiswa</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xxl-3">
+                <div class="card overflow-hidden">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="mt-2">
+                                <h6 class="fw-normal">Jumlah Dosen</h6>
+                                <h2 class="mb-0 text-dark fw-semibold">{{ $total_dosen }}</h2>
+                            </div>
+                            <div class="ms-auto">
+                                <div class="chart-wrapper mt-1">
+                                    <canvas id="costchart"
+                                        class="chart-dropshadow"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="text-muted fs-12"><span class="text-warning"><i
+                                    class="fe fe-arrow-up-circle text-warning"></i> {{$persentase_dosen }}%</span>
+                            Dosen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
        
 
         <!-- ROW-2 -->
@@ -71,18 +114,18 @@
             <div class="col-xxl-9">
                 <div class="card overflow-hidden">
                     <div class="card-header">
-                        <h3 class="card-title">LogBook Analytics</h3>
+                        <h3 class="card-title">Admin Analytics</h3>
                     </div>
                     <div class="card-body">
                         <div class="d-flex mx-auto text-center justify-content-center mb-4">
-                            <div class="d-flex text-center justify-content-center me-3"><span
-                                    class="dot-label bg-primary my-auto"></span>Jumlah Users</div>
-                            <div class="d-flex text-center justify-content-center"><span
-                                    class="dot-label bg-secondary my-auto"></span>jumlah Logbook</div>
+                           
                         </div>
-                        {{-- <div class="chartjs-wrapper-demo w-100">
-                            <canvas id="dashboardChart" class="chart-dropshadow w-100"></canvas>
-                        </div> --}}
+                        <div id="chart">
+                            {!! $chart->container() !!}
+                        </div>
+                    
+                        {!! $chart->script() !!}
+                        
                     </div>
                 </div>
             </div>

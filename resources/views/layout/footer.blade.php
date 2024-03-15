@@ -169,6 +169,7 @@ Swal.fire({
 <script src="{{ asset('assets/js/date&time_pickers.js') }}"></script>
 <script src="{{ asset('assets/js/validation.js') }}"></script>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
@@ -198,6 +199,7 @@ Swal.fire({
         <script src="{{asset('assets/libs/prismjs/prism.js')}}"></script>
         <script src="{{asset('assets/js/prism-custom.js')}}"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <script>
     $(function() {
         //Initialize Select2 Elements
@@ -308,57 +310,6 @@ Swal.fire({
     });
 </script>
 
-<script>
-// $(document).ready(function() {
-//     var logbookTable = $('#responsiveDataTable').DataTable();
-
-//     $('#inputState1').change(function() {
-//         var selectedUserId = $(this).val();
-//         if (selectedUserId) {
-//             $.get('{{ asset("getLogbookByUser", ":userId") }}'.replace(':userId', selectedUserId), function(response) {
-//                 logbookTable.clear().draw();
-//                 response.logbooks.forEach(function(logbook) {
-//                     logbookTable.row.add([
-//                         logbook.nama_pasien,
-//                         logbook.umur,
-//                         logbook.mr
-//                         // Tambahkan kolom lainnya sesuai kebutuhan
-//                     ]).draw(false);
-//                 });
-//             });
-//         } else {
-//             logbookTable.clear().draw();
-//         }
-//     });
-// });
-
-   
-   
-</script>
-<script>
-      $(document).ready(function() {
-        $('#inputState1').change(function() {
-            var selectedLogbook = $(this).val();
-            if(selectedLogbook) {
-                $.ajax({
-                    type: 'GET',
-                    url: 'getLogbookByUser',
-                    data: { selectedLogbook: selectedLogbook },
-                    success: function(response) {
-                        var logbookData = response;
-                        var result = '';
-                        logbookData.forEach(function(item) {
-                            result += '<p>' + item.nama_pasien + ' - ' + item.umur + '</p>'; // Ganti field1, field2, dll. sesuai dengan nama kolom yang ada di model Logbook
-                        });
-                        $('#logbookData').html(result);
-                    }
-                });
-            } else {
-                $('#logbookData').html('');
-            }
-        });
-    });
-</script>
 
 
 

@@ -15,31 +15,16 @@ class Userseeder extends Seeder
      */
     public function run()
     {
-        User::truncate();
+        User::query()->delete();
+
+        // User::truncate();
         User::create([
             'nama' => 'admin',
             'username' => 'admin1',
             'password' => bcrypt('admin'),
             'level' => 'admin',
+
+        ]);
         
-
-        ]);
-        User::create([
-            'nama' => 'user',
-            'username' => 'user1',
-            'password' => bcrypt('user'),
-            'level' => 'users',
-            
-
-        ]);
-
-        User::create([
-            'nama' => 'dosen',
-            'username' => 'dosen1',
-            'password' => bcrypt('dosen'),
-            'level' => 'dosen',
-           
-
-        ]);
     }
 }
