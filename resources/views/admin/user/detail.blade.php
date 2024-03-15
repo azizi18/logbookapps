@@ -68,11 +68,11 @@
                             
                         </ul>
 
-                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <a href="{{ url('admin/user/edit_password') }}" class="btn btn-primary btn-wave">
                                 <i class="bi bi-pencil-square"></i> Ubah Password
                             </a>   
-                    </div>
+                    </div> --}}
                     </div>
                   
                 </div>

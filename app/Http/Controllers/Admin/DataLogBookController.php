@@ -11,6 +11,8 @@ use Illuminate\Support\Str;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
+
 
 
 
@@ -108,6 +110,8 @@ class DataLogBookController extends Controller
 					        ]);             
                $status = $request->input('status', 'tertunda');
                $uuid = Str::uuid();
+               $tanggal_masuk = Carbon::parse($request->tanggal_masuk)->format('Y-m-d');
+               $tanggal_tindakan = Carbon::parse($request->tanggal_tindakan)->format('Y-m-d');
 
             DB::table('logbook')->insert([
                 'user_id'               => auth()->id(),
@@ -126,8 +130,8 @@ class DataLogBookController extends Controller
                 'asal_rujukan'   	   => $request->asal_rujukan,
                 'keterangan'   	       => $request->keterangan,
                 'status'   	           => $status,
-                'tanggal_masuk'   	   => date('Y-m-d', strtotime($request->tanggal_masuk)),
-                'tanggal_tindakan'     => date('Y-m-d', strtotime($request->tanggal_tindakan))
+                'tanggal_masuk'   	   => $tanggal_masuk,
+                'tanggal_tindakan'     => $tanggal_tindakan
                 
             ]);
         
@@ -157,6 +161,8 @@ class DataLogBookController extends Controller
                             
             $status = $request->input('status', 'tertunda');
             $uuid = Str::uuid();
+            $tanggal_masuk = Carbon::parse($request->tanggal_masuk)->format('Y-m-d');
+            $tanggal_tindakan = Carbon::parse($request->tanggal_tindakan)->format('Y-m-d');
        
             DB::table('logbook')->where('id',$request->id)->update([
                 'user_id'               => auth()->id(),
@@ -175,8 +181,8 @@ class DataLogBookController extends Controller
                 'asal_rujukan'   	   => $request->asal_rujukan,
                 'keterangan'   	       => $request->keterangan,
                 'status'   	           => $status,               
-                 'tanggal_masuk'   	   => date('Y-m-d', strtotime($request->tanggal_masuk)),
-                'tanggal_tindakan'     => date('Y-m-d', strtotime($request->tanggal_tindakan))
+                'tanggal_masuk'   	   => $tanggal_masuk,
+                'tanggal_tindakan'     => $tanggal_tindakan
             ]);
         
         return redirect('admin/data-logbook')->with(['succses' => 'Data telah diupdate']);

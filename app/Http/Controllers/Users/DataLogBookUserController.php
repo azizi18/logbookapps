@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Pagination\Paginator;
 use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 
 class DataLogBookUserController extends Controller
@@ -86,7 +87,7 @@ class DataLogBookUserController extends Controller
 					        'klasifikasi_kasus' => 'required',
 					        'kasus_obstetri'    => 'required',
 					        'kasus_ginekologi'  => 'required',
-					        'level_kompetensi'      => 'required',
+					        'level_kompetensi'   => 'required',
 					        'asal_rujukan'      => 'required',
 					        'keterangan'        => 'required',
 					        'tanggal_masuk'     => 'required',
@@ -94,6 +95,8 @@ class DataLogBookUserController extends Controller
 					        ]);             
                $status = $request->input('status', 'tertunda');
                $uuid = Str::uuid();
+               $tanggal_masuk = Carbon::parse($request->tanggal_masuk)->format('Y-m-d');
+               $tanggal_tindakan = Carbon::parse($request->tanggal_tindakan)->format('Y-m-d');
               
             DB::table('logbook')->insert([
                 'user_id'               => auth()->id(),
@@ -112,8 +115,8 @@ class DataLogBookUserController extends Controller
                 'asal_rujukan'   	   => $request->asal_rujukan,
                 'keterangan'   	       => $request->keterangan,
                 'status'   	           => $status,
-                'tanggal_masuk'   	   => date('Y-m-d', strtotime($request->tanggal_masuk)),
-                'tanggal_tindakan'     => date('Y-m-d', strtotime($request->tanggal_tindakan))
+                'tanggal_masuk'   	   => $tanggal_masuk,
+                'tanggal_tindakan'     => $tanggal_tindakan
                 
             ]);
         
@@ -143,7 +146,8 @@ class DataLogBookUserController extends Controller
                             
             $status = $request->input('status', 'tertunda');
             $uuid = Str::uuid();
-       
+            $tanggal_masuk = Carbon::parse($request->tanggal_masuk)->format('Y-m-d');
+            $tanggal_tindakan = Carbon::parse($request->tanggal_tindakan)->format('Y-m-d');
             DB::table('logbook')->where('id',$request->id)->update([
                 'user_id'               => auth()->id(),
                 'id'                    => $uuid,
@@ -161,18 +165,18 @@ class DataLogBookUserController extends Controller
                 'asal_rujukan'   	   => $request->asal_rujukan,
                 'keterangan'   	       => $request->keterangan,
                 'status'   	           => $status,               
-                 'tanggal_masuk'   	   => date('Y-m-d', strtotime($request->tanggal_masuk)),
-                'tanggal_tindakan'     => date('Y-m-d', strtotime($request->tanggal_tindakan))
+                 'tanggal_masuk'   	   => $tanggal_masuk,
+                'tanggal_tindakan'     => $tanggal_tindakan
             ]);
         
         return redirect('users/data-logbook')->with(['succses' => 'Data telah diupdate']);
     }
 
  // Delete
- public function delete()
+ public function delete($id)
  {
-    $user = auth()->id();
-     DB::table('logbook')->where('user_id',$user)->delete();
+    // $user = auth()->id();
+     DB::table('logbook')->where('id', $id)->delete();
      return redirect('users/data-logbook')->with(['succses' => 'Data telah dihapus']);
  }
    
