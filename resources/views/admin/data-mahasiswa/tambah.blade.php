@@ -37,12 +37,15 @@
                         <div class="card-body">
                             <div class="mt-2">
                                 <label class="form-label">Pilih Dosen</label>
-                                <select name="dosen_id" id="dosen_id" class="form-select">
+                                <select name="dosen_id" id="dosen_id" class="form-select" required>
                                     @foreach($dosen as $d)
                                         <option value="{{ $d->id }}">{{ $d->nama }}</option>
                                     @endforeach
+                                    <div class="invalid-feedback">
+                                        Tolong pilih dosen yg ingin diinput.
+                                    </div>
                                 </select>
-                               
+                                
                             </div>
 
                             <div class="row mt-4">
@@ -63,8 +66,10 @@
                                                 
                                                
                                                 <td align="center">
-                                                    <input type="checkbox"  style="width: 18px; height: 18px;" name="selected_mahasiswas[]" value="{{ $mahasiswa->id }}">
-            
+                                                    <input type="checkbox"  style="width: 18px; height: 18px;" name="selected_mahasiswas[]" value="{{ $mahasiswa->id }}" required>
+                                                    <div class="invalid-feedback">
+                                                        Tolong pilih mahasiswa yg ingin diinput.
+                                                    </div>
                                                 </td>
                                             </tr>
                                             @endforeach

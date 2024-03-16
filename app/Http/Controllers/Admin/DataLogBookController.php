@@ -21,7 +21,7 @@ class DataLogBookController extends Controller
 {
     public function index (){
         Paginator::useBootstrap();
-        $logbook 	= DB::table('logbook')->orderBy('id','DESC')->get();
+        $logbook 	= DB::table('logbook')->orderBy('id','DESC')->latest()->get();
         
 		$data = array(  'title'     => 'Data Logbook',
                         'logbook'      => $logbook,

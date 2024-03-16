@@ -17,7 +17,7 @@ use App\Imports\UserImport;
 class UserController extends Controller
 {
     public function index (){
-        $user 	= DB::table('users')->orderBy('id','DESC')->get();
+        $user 	= DB::table('users')->orderBy('id','DESC')->latest()->get();
 
 		$data = array(  'title'     => 'Logbook',
                         'user'      => $user,

@@ -21,7 +21,7 @@ class DataMahasiswaController extends Controller
        
         // $dataassigmentMahasiswa = DB::table('dosen_mahasiswa_assignment')->where('id')->get();
         // $dataassigmentMahasiswa = DosenMahasiswaAssignment::with(['dosen', 'mahasiswa'])->get();
-        $dataassigmentMahasiswa = DosenMahasiswaAssignment::all();
+        $dataassigmentMahasiswa = DosenMahasiswaAssignment::latest()->get();
        
 
 		$data = array(  'title'     => 'Data Mahasiswa',
@@ -52,7 +52,11 @@ class DataMahasiswaController extends Controller
 
     public function assignMahasiswaToDosen(Request $request)
     {
-        // Validasi form
+        request()->validate([
+                'dosen_id'  => 'required', 
+                'selected_mahasiswas' =>'required'
+        ]);
+
         $selectedMahasiswas = $request->input('selected_mahasiswas');
     $dosenId = $request->input('dosen_id');
 

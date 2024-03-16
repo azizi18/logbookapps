@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Illuminate\Pagination\Paginator;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
 
@@ -15,11 +14,10 @@ use Carbon\Carbon;
 class DataLogBookUserController extends Controller
 {
     public function index (){
-        Paginator::useBootstrap();
 
         $user = auth()->id();
 
-        $logbook 	= DB::table('logbook')->where('user_id', $user)->get();
+        $logbook 	= DB::table('logbook')->where('user_id', $user)->latest()->get();
         
 		$data = array(  'title'     => 'Data Logbook',
                         'logbook'      => $logbook,

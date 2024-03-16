@@ -26,6 +26,7 @@ class DataLogBookDosenController extends Controller
       
         $mahasiswas = DosenMahasiswaAssignment::where('dosen_id', $dosenId)
                         ->with('mahasiswa')
+                        ->latest()
                         ->get();
                    
 		$data = array(  'title'     => 'Data Logbook',
@@ -58,7 +59,7 @@ class DataLogBookDosenController extends Controller
     {
         $mahasiswaId = $request->input('mahasiswa_id');
 
-        $logbooks = Logbook::where('user_id', $mahasiswaId)->get();
+        $logbooks = Logbook::where('user_id', $mahasiswaId)->latest()->get();
 
 
             // Kemudian, Anda dapat mengembalikan atau menampilkan data logbook sesuai kebutuhan
