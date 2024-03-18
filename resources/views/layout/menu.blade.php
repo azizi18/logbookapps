@@ -148,7 +148,7 @@
               <!-- End::slide -->
 
               <!-- End::slide -->
-              @if (auth()->user()->level=="users")
+              @if (auth()->user()->level=="mahasiswa")
 
                 <!-- Start::slide -->
                 <li class="slide">

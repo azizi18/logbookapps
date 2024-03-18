@@ -38,7 +38,7 @@ class DataMahasiswaController extends Controller
             ->get();
 
         $mahasiswa = DB::table('users')
-            ->where('level', 'users') 
+            ->where('level', 'mahasiswa') 
             ->get();
         $data = array(
             'title'       => 'Tambah Data',

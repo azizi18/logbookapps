@@ -15,7 +15,7 @@ class DashboardController extends Controller
       
         
 		// jumlah mahasiswa
-        $total_mahasiswa = DB::table('users')->where('level','users')->count();
+        $total_mahasiswa = DB::table('users')->where('level','mahasiswa')->count();
 
         $total_mahasiswa_persen = 100;
 

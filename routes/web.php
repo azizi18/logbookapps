@@ -77,7 +77,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:dosen']], function(){
 });
 
 
-Route::group(['middleware' => ['auth', 'ceklevel:users']], function(){
+Route::group(['middleware' => ['auth', 'ceklevel:mahasiswa']], function(){
     route::get('users/dashboard','App\Http\Controllers\Users\DashboardController@index');
     Route::get('users/data-logbook', 'App\Http\Controllers\Users\DataLogBookUserController@index');
     Route::get('users/user/edit_password', 'App\Http\Controllers\Users\UserController@edit_password');

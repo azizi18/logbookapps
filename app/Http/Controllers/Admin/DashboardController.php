@@ -27,7 +27,7 @@ class DashboardController extends Controller
         $persentase_logbook = ($total_logbook / $total_logbook_persen) * 100;
 
         // jumlah mahasiswa
-        $total_mahasiswa = DB::table('users')->where('level','users')->count();
+        $total_mahasiswa = DB::table('users')->where('level','mahasiswa')->count();
 
         $total_mahasiswa_persen = 100;
 
@@ -46,7 +46,7 @@ class DashboardController extends Controller
         for ($i=1; $i <= $bulan ; $i++){
             $totalLogbook = DB::table('logbook')->whereYear('created_at', $tahun)->whereMonth('created_at', $i)->count();
             $totalusers = DB::table('users')->whereYear('created_at', $tahun)->whereMonth('created_at', $i)->where('id')->count();
-            $totalmahasiswa = DB::table('users')->whereYear('created_at', $tahun)->whereMonth('created_at', $i)->where('level','users')->count();
+            $totalmahasiswa = DB::table('users')->whereYear('created_at', $tahun)->whereMonth('created_at', $i)->where('level','mahasiswa')->count();
             $totaldosen = DB::table('users')->whereYear('created_at', $tahun)->whereMonth('created_at', $i)->where('level','dosen')->count();
 
             $databulan[] = Carbon::create()->month($i)->format('F');

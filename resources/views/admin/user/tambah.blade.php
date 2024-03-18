@@ -55,7 +55,7 @@
                             <select class="form-select" name="level">
                                 <option value="admin">Admin</option>
                                 <option value="dosen">Dosen</option>
-                                <option value="users">User</option>
+                                <option value="mahasiswa">Mahasiswa</option>
                                
                             </select>
                         </div>

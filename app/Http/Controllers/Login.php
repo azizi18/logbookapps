@@ -30,7 +30,7 @@ class Login extends Controller
         } elseif (Auth::user()->level === 'dosen') {
             return redirect()->intended('dosen/dashboard');
         }
-        elseif (Auth::user()->level === 'users') {
+        elseif (Auth::user()->level === 'mahasiswa') {
           return redirect()->intended('users/dashboard');
       }
     }
